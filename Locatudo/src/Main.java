@@ -4,11 +4,11 @@ import locatudo.model.models.Episode;
 import locatudo.model.models.Movie;
 import locatudo.model.models.TvShow;
 
+import java.util.ArrayList;
+
 public class Main {
     public static void main(String[] args) {
-        Movie myMovie = new Movie();
-        myMovie.setName("Alien");
-        myMovie.setReleaseYear(1979);
+        Movie myMovie = new Movie("Alien", 1979);
         myMovie.setDirectorName("Ridley Scott");
         myMovie.setPlanIncluded(true);
         myMovie.setDuration(94);
@@ -22,16 +22,13 @@ public class Main {
         System.out.println("Total rating: " + myMovie.getTotalRating());
         System.out.println(myMovie.average());
 
-        TvShow mySeries = new TvShow();
-        mySeries.setName("Breaking Bad");
-        mySeries.setReleaseYear(2008);
+        TvShow mySeries = new TvShow("Breaking Bad", 2008);
         mySeries.setDirectorName("Vince Gilligan");
         mySeries.setSeason(5);
         mySeries.setSeasonEps(16);
         mySeries.setActivity(true);
         mySeries.setDuration(50);
 
-        mySeries.displaysTechnicalSheet();
         mySeries.assesses(4.8); // Public
         mySeries.assesses(5); // Rotten Tomatoes
         mySeries.assesses(4.5); //Letterboxd
@@ -39,18 +36,24 @@ public class Main {
         mySeries.displaysTechnicalSheet();
         System.out.println("Duration by episodes: " + mySeries.getDuration());
 
-        Movie otherMovie = new Movie();
-        otherMovie.setName("Anatomy of a Fall");
-        otherMovie.setReleaseYear(2023);
+        Movie otherMovie = new Movie("Anatomy of a Fall", 2023);
         otherMovie.setDirectorName("Justine Triet");
         otherMovie.setPlanIncluded(true);
         otherMovie.setDuration(138);
 
         otherMovie.displaysTechnicalSheet();
 
+        var thirdMovie = new Movie("Kill Bill Vol.2", 2004);
+        thirdMovie.setDirectorName("Quentin Tarantino");
+        thirdMovie.setPlanIncluded(true);
+        thirdMovie.setDuration(130);
+
+        thirdMovie.displaysTechnicalSheet();
+
         TimeCalculator calculator = new TimeCalculator();
         calculator.marathon(myMovie);
         calculator.marathon(otherMovie);
+        calculator.marathon(thirdMovie);
         calculator.marathon(mySeries);
         System.out.println("Marathon time: " + calculator.getTotalTime() + "min");
 
@@ -62,5 +65,14 @@ public class Main {
         episode.setSeries(mySeries);
         episode.setTotalViews(1000);
         filter.filter(episode);
+
+        var movieList = new ArrayList<Movie>();
+        movieList.add(myMovie);
+        movieList.add(otherMovie);
+        movieList.add(thirdMovie);
+        System.out.println("Number of movies in the list: " + movieList.size());
+        System.out.println("First movie: " + movieList.get(0).getName());
+        System.out.println(movieList);
+        System.out.println("toString movies: " + movieList.get(0).toString());
     }
 }

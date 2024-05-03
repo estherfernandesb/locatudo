@@ -7,6 +7,11 @@ import locatudo.model.calculator.Sortable;
 public class Movie extends Title implements Sortable {
     private String directorName;
 
+
+    public Movie(String name, int releaseYear) {
+        super(name, releaseYear);
+    }
+
     public String getDirectorName() {
         return directorName;
     }
@@ -18,5 +23,10 @@ public class Movie extends Title implements Sortable {
     @Override
     public double getClassification() {
         return (int) (average() / 2);
+    }
+
+    @Override
+    public String toString() {
+        return "Movie: " + this.getName() + " (" + this.getReleaseYear() + ") ";
     }
 }

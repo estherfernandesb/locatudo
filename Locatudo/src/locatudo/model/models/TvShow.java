@@ -8,6 +8,10 @@ public class TvShow extends Title {
     private int seasonEps;
     private String directorName;
 
+    public TvShow(String name, int releaseYear) {
+        super(name, releaseYear);
+    }
+
     public String getDirectorName() {
         return directorName;
     }

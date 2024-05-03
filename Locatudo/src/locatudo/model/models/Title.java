@@ -11,6 +11,11 @@ public class Title {
     private double totalRating;
     private int duration;
 
+    public Title(String name, int releaseYear) {
+        this.name = name;
+        this.releaseYear = releaseYear;
+    }
+
     public int getTotalRating(){
         return (int) totalRating;
     }
